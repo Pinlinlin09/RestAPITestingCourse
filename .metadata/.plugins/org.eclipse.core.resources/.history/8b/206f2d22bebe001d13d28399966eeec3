@@ -1,0 +1,28 @@
+package stepDefinitions;
+
+import java.io.IOException;
+
+import io.cucumber.java.Before;
+
+//setting up the precondition for the automation framework--use this only previous scenario is not running (in this case, addPlace is not run)
+public class Hooks {
+	@Before("@DeletePlace")
+	public void beforeScenario() throws IOException {
+		/*
+		 * execute this code only when place_id is null
+		 * write a code that will give place_id
+		 */
+		StepDefinition sd = new StepDefinition();
+		//since the variable is static, it belong to the class so you can do like this.
+		if(StepDefinition.place_id == null) {
+			//add a place
+			sd.add_place_payload_with("CFA", "Spanish", "United States");
+			//call the request
+			sd.user_calls_with_http_request("AddPlaceAPI", "POST");
+			//next get place_id:
+			sd.verify_place_id_created_maps_to_using("CFA", "POST");
+		}
+		
+	}
+	
+}

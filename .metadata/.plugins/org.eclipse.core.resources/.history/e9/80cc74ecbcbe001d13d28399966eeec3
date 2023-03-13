@@ -1,0 +1,15 @@
+package stepDefinitions;
+
+import io.cucumber.java.Before;
+
+//setting up the precondition for the automation framework
+public class Hooks {
+	@Before("@DeletePlace")
+	public void beforeScenario() {
+		/*
+		 * execute this code only when place_id is null
+		 * write a code that will give place_id
+		 */
+	}
+	
+}

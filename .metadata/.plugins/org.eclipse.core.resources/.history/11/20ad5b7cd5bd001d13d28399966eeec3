@@ -1,0 +1,28 @@
+package resources;
+
+import java.io.FileOutputStream;
+import java.io.PrintStream;
+
+import io.restassured.RestAssured;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.http.ContentType;
+import io.restassured.specification.RequestSpecification;
+
+public class Utils {
+	public RequestSpecification requestSpecification() {
+		PrintStream log = new PrintStream(new FileOutputStream("logging.txt"));
+		// Write code here that turns the phrase above into concrete actions
+		RestAssured.baseURI = "https://rahulshettyacademy.com";
+		
+		/*build object of RequestSpecification
+		 * set URL
+		 * add Query Param
+		 * set Content Type is optional for this test. this service is option here
+		 */
+		RequestSpecification req = new RequestSpecBuilder().setBaseUri("https://rahulshettyacademy.com").addQueryParam("key", "qaclick123")
+				.addFilter(RequestLoggingFilter.logRequestTo(log))
+				.setContentType(ContentType.JSON).build();
+		return req;
+	}
+}

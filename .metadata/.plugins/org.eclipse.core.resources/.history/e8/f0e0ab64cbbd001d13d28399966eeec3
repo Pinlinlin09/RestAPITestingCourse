@@ -1,0 +1,4 @@
+#Need to start with this keyword: "Feature"
+Feature: Validating Place APIs
+
+Scenario: Verify if place is being sucessfully added using AddPlaceAPI

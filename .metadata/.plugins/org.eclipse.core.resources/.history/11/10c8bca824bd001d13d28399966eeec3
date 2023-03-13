@@ -1,0 +1,22 @@
+package stepDefinition;
+
+import org.junit.runner.RunWith;
+
+import io.cucumber.java.PendingException;
+import io.cucumber.java.en.*;
+import io.cucumber.junit.Cucumber;
+
+@RunWith(Cucumber.class)
+public class stepDefinition {
+	@Given("^User is on NetBanking landing page$")
+	public void user_is_on_NetBanking_Landing() throws Throwable{
+		//write code user will navigate to landing page
+		throw new PendingException();
+	}
+	
+	@When("^User login into application with username and password")
+	public void user_is_on_NetaBanking_Landing() throws Throwable{
+		//username and password
+		throw new PendingException();
+	}
+}

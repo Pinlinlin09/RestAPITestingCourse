@@ -1,0 +1,7 @@
+java.lang.IllegalArgumentException: No enum constant resources.APIResources.POST
+	at java.base/java.lang.Enum.valueOf(Enum.java:273)
+	at resources.APIResources.valueOf(APIResources.java:1)
+	at stepDefinitions.StepDefinition.user_calls_with_http_request(StepDefinition.java:37)
+	at stepDefinitions.StepDefinition.verify_place_id_created_maps_to_using(StepDefinition.java:60)
+	at stepDefinitions.Hooks.beforeScenario(Hooks.java:23)
+

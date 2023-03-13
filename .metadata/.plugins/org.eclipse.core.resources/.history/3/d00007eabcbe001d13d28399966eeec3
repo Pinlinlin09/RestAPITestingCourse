@@ -1,0 +1,5 @@
+package stepDefinitions;
+//setting up the precondition for the automation framework
+public class Hooks {
+	
+}

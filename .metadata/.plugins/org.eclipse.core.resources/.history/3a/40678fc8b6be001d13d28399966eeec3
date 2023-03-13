@@ -1,0 +1,34 @@
+package resources;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import pojo.AddPlace;
+import pojo.Location;
+
+public class TestDataBuild {
+	
+	public AddPlace addPlacePayLoad(String name, String language, String address) {
+		AddPlace p = new AddPlace();
+		p.setAccuracy(50);
+		p.setAddress(address);
+		p.setLanguage(language);
+		p.setPhone_number("(+1) 434-977-0437");
+		p.setWebsite("https://www.cfainstitute.org/");
+		p.setName(name);
+		List <String> myList = new ArrayList<String>();
+		myList.add("CFA Insitute");
+		myList.add("company");
+		p.setTypes(myList);
+		//you need to set Location object here, refer to AddPlace.java
+		Location l = new Location();
+		l.setLat(-38.383494);
+		l.setLng(33.427362);
+		p.setLocation(l);
+		return p;
+	}
+	
+	public String deletePlacePayload() {
+		return "{\r\n    \"place_id\":\"29b0958f01b38bb1a9264e108eefdd09\"\r\n}";
+	}
+}

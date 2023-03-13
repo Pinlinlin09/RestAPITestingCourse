@@ -1,0 +1,21 @@
+package files;
+
+import static io.restassured.RestAssured.*;
+
+import org.testng.Assert;
+
+import io.restassured.path.json.JsonPath;
+
+public class GraphQLScript {
+
+	public static void main(String[] args) {
+		String response = given().log().all().header("Content-Type", "application/json")
+		.body("{\"query\":\"query ($characterId: Int!,$episodeId: Int!, $locationId: Int!) {\\n  character(characterId:$characterId) {\\n    name\\n    gender\\n    status\\n    id\\n  }\\n  location(locationId:$locationId){\\n    name\\n    dimension\\n  }\\n  episode (episodeId:$episodeId){\\n    name\\n    air_date\\n    episode\\n  }\\n  characters(filters:{name:\\\"Rahul\\\"}){\\n    info{\\n      count\\n    }\\n    result{\\n      name\\n      type\\n    }\\n  }\\n  \\n  episodes(filters:{episode: \\\"hulu\\\"}){\\n    result{\\n      id\\n      name\\n      air_date\\n      episode\\n    }\\n  }\\n  \\n}\\n\",\"variables\":{\"characterId\":1442,\"episodeId\":1073,\"locationId\":1904}}")
+		.when().post("https://rahulshettyacademy.com/gq/graphql").then().extract().asString();
+		System.out.println(response);
+		JsonPath js = new JsonPath(response);
+		String characterName = js.getString("data.charater.name");
+		Assert.assertEquals(characterName, "Rahul");
+	}
+
+}
